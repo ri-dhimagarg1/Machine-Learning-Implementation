@@ -13,5 +13,22 @@ class Model:
              np.sqrt(1. /word_dim), (hidden_dim, word_dim))
         self.waa = np.random.uniform(-np.sqrt(1. /hidden_dim),\
              np.sqrt(1. /hidden_dim), (hidden_dim, hidden_dim))
-        self.waa = np.random.uniform(-np.sqrt(1. /hidden_dim),\
+        self.way = np.random.uniform(-np.sqrt(1. /hidden_dim),\
              np.sqrt(1. /hidden_dim), (word_dim, hidden_dim))
+
+    def forward_propogation(self,x):
+
+        T = len(x)
+        layers = []
+        self.prev_a = np.zeros(self.hidden_dim)
+
+        for t in T:
+            layer = RNNLayer()
+            input = np.zeros(self.word_dim)
+            input[x[t]] = 1
+            layer.foward(input, prev_a, waa, wax, way)
+            prev_a = a
+            layers.append(layer)
+        return layers
+
+
