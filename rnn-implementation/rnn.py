@@ -26,7 +26,7 @@ class Model:
             layer = RNNLayer()
             input = np.zeros(self.word_dim)
             input[x[t]] = 1
-            layer.foward(input, prev_a, waa, wax, way)
+            layer.foward(input, prev_a, self.waa, self.wax, self.way)
             prev_a = a
             layers.append(layer)
         return layers
