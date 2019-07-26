@@ -31,4 +31,6 @@ class Model:
             layers.append(layer)
         return layers
 
+    def predict():
+        
 
