@@ -36,22 +36,30 @@ class Model:
         layers = self.forward_propogation(x)
         return [ np.argmax(output.predict(layer.mulya)) for layer in layers]        
 
+    ## Loss for each step i.e, each layer of RNN
     def calculate_loss(self,x, y):
+
+        ## Check if length of input and output is same or not
         assert len(y) == len(x)
         
         output = Softmax()
         layers = forward_propogation(x)
+
+        ## Initialize loss with 0
         loss =0
+
+        ## Iterating over layers 
         for i, layer in enumerate(layers):
             loss += output.loss(layer.mulya, y[i])
 
         return loss/float(len(y))
 
+## Summing up the whole loss for all layers of 
     def calculate_total_loss(self,x,y):
         loss = 0.0
 
         for i in range(len(y)):
             loss += self.calculate_loss(x[i], y[i])
-            
+
         return loss/float(len(y))
 
