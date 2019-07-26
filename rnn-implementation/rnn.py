@@ -44,4 +44,14 @@ class Model:
         loss =0
         for i, layer in enumerate(layers):
             loss += output.loss(layer.mulya, y[i])
+
         return loss/float(len(y))
+
+    def calculate_total_loss(self,x,y):
+        loss = 0.0
+
+        for i in range(len(y)):
+            loss += self.calculate_loss(x[i], y[i])
+            
+        return loss/float(len(y))
+
