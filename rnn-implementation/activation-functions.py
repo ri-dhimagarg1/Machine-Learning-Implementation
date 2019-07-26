@@ -16,6 +16,8 @@ class Softmax:
     def predict(self,x):
         exp_scores = np.exp(x)
         return exp_scores/np.sum(exp_scores)
-    
-    def diff():
-        pass
+        
+    ## Simple cross entropy loss without any derivative (i.e, for forward pass)
+    def loss(self,x,y):
+        probs = self.predict(x)
+        return -np.log(probs[y])
