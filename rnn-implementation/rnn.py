@@ -31,6 +31,17 @@ class Model:
             layers.append(layer)
         return layers
 
-    def predict():
-        
+    def predict(self,x):
+        output = Softmax()
+        layers = self.forward_propogation(x)
+        return [ np.argmax(output.predict(layer.mulya)) for layer in layers]        
 
+    def calculate_loss(self,x, y):
+        assert len(y) == len(x)
+        
+        output = Softmax()
+        layers = forward_propogation(x)
+        loss =0
+        for i, layer in enumerate(layers):
+            loss += output.loss(layer.mulya, y[i])
+        return loss/float(len(y))
