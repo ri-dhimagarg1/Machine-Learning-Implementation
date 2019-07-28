@@ -54,12 +54,12 @@ class Model:
 
         return loss/float(len(y))
 
-## Summing up the whole loss for all layers of 
-    def calculate_total_loss(self,x,y):
+## We will have N training examples so iterate over all examples to calculate loss
+    def calculate_total_loss(self,X,Y):
         loss = 0.0
 
-        for i in range(len(y)):
-            loss += self.calculate_loss(x[i], y[i])
+        for i in range(len(Y)):
+            loss += self.calculate_loss(X[i], Y[i])
 
-        return loss/float(len(y))
+        return loss/float(len(Y))
 

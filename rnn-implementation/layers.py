@@ -6,7 +6,7 @@ addgate = AddGate()
 tanh = Tanh()
 
 class RNNLayer:
-    def foward(self, x, prev_a, waa, wax, way):
+    def foward(self, x, prev_a, waa, wax, wya):
         self.mulax = mulgate.forward(wax, x)
         self.mulaa = mulgate.forward(waa, prev_a)
         self.add = addgate.forward(self.mulax, self.mulaa)
