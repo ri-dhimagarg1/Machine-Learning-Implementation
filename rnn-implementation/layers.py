@@ -12,5 +12,9 @@ class RNNLayer:
         self.add = addgate.forward(self.mulax, self.mulaa)
         self.a = tanh.forward(self.add)
         self.mulya = mulgate.forward(wya, a)
+
+    def backward(self, x, prev_a, waa, wax, wya, diff_a, dmulya):
+        
+
         
         
