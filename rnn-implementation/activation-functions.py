@@ -9,7 +9,7 @@ class Sigmoid:
 class Tanh:
     def forward(self,x):
         return np.tanh(x)
-    def bcakward():
+    def backward():
         pass
 
 class Softmax:
@@ -21,3 +21,9 @@ class Softmax:
     def loss(self,x,y):
         probs = self.predict(x)
         return -np.log(probs[y])
+
+    ## diff -> yt-y^t
+    def diff(self, x, y):
+        probs = self.predict(x)
+        probs[y] = probs[y] - 1.0 ## As we are subtracting from 1 because at that index in probability vector will subtract from original vector and it contains 1 at that index only.
+        return probs
