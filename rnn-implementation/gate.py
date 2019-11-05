@@ -11,7 +11,10 @@ class AddGate:
 class MultiplyGate:
     def forward(self,W,x):
         return np.dot(W,x)
-        
+
+## W here is any weight - waa, wax, wya
+## x is input such as x, a, prev_a
+## dz is the difference of (y , y^)       
     def backward(self, W, x, dz):
         dW = np.asarray(np.dot(np.transpose(np.asmatrix(dz)), np.asmatrix(x) ))
         dx = np.dot(np.transpose(W), dz)

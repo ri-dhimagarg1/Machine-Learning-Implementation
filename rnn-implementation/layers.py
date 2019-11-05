@@ -14,9 +14,11 @@ class RNNLayer:
         self.mulya = mulgate.forward(wya, a)
 
 ## dmulya = y^t - yt
+## dV = (y^t - yt) * at
     def backward(self, x, prev_a, waa, wax, wya, diff_a, dmulya):
         self.forward(x, prev_a, waa, wax, wya)
-        dV, ds = mulgate.backward(wya, self.a, dmulya)
+        dV, dav = mulgate.backward(wya, self.a, dmulya)
+        da = dav + diff_a
         
 
         
